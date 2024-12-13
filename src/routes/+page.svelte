@@ -174,6 +174,7 @@
 
 	<!-- About and Skills Section -->
 	<section
+		id="about"
 		class="mx-auto flex min-h-screen max-w-screen-lg items-center backdrop-blur-md bg-transparent justify-center backdrop:saturate-50"
 	>
 		<div class="mx-auto flex w-screen gap-16 backdrop:blur-md sm:flex-col lg:h-4/5 lg:flex-row">
@@ -328,7 +329,7 @@
 	</div>
 
 	<!-- Experiences Section -->
-	<section class="bg-zinc-950 py-12">
+	<section id="explos" class="bg-zinc-950 py-12">
 		<div class="mx-auto px-4">
 			<div class="container py-4">
 				{#each projects as project, i}
