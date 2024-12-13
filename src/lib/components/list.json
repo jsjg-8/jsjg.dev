@@ -1,0 +1,168 @@
+﻿{
+    "Hero Sections": [
+        {
+            "Section Name": "Single CTA Hero",
+            "Description": "A hero section with a prominent Call-to-Action button to capture user attention.",
+            "Variants": "Light, Dark, Image Background"
+        },
+        {
+            "Section Name": "Split Hero",
+            "Description": "A section divided into two, featuring text on one side and an image or graphic on the other.",
+            "Variants": "Left Image, Right Image, Full-Width Background"
+        },
+        {
+            "Section Name": "Video Hero",
+            "Description": "A hero section with a looping video background for dynamic visual appeal.",
+            "Variants": "Muted, With Controls, Autoplay"
+        }
+    ],
+    "About Sections": [
+        {
+            "Section Name": "Company Introduction",
+            "Description": "An overview section that explains the mission, vision, and values of the company.",
+            "Variants": "Text Focused, Image Accompanied, Video Embedded"
+        },
+        {
+            "Section Name": "Team Showcase",
+            "Description": "Display of team members with their profiles, roles, and optional links to social media.",
+            "Variants": "Grid, Carousel, Simple List"
+        },
+        {
+            "Section Name": "History Timeline",
+            "Description": "A timeline displaying the major milestones or achievements of the company over time.",
+            "Variants": "Horizontal Timeline, Vertical Timeline, Step by Step"
+        }
+    ],
+    "Services/Features Sections": [
+        {
+            "Section Name": "Service Offerings",
+            "Description": "An overview of the services provided, typically using icons or images for each service.",
+            "Variants": "Grid, List, Tabbed"
+        },
+        {
+            "Section Name": "Feature Comparisons",
+            "Description": "A section that compares features of different products or plans side by side.",
+            "Variants": "Table, Side-by-Side Cards"
+        }
+    ],
+    "Portfolio & Case Study Sections": [
+        {
+            "Section Name": "Portfolio Gallery",
+            "Description": "A gallery showcasing a visual portfolio of projects, images, or work.",
+            "Variants": "Grid, Masonry, Carousel"
+        },
+        {
+            "Section Name": "Case Study Showcase",
+            "Description": "A detailed showcase of case studies that highlight specific projects and their outcomes.",
+            "Variants": "Single Column, Multi-Column, Slideshow"
+        }
+    ],
+    "Call-to-Action Sections": [
+        {
+            "Section Name": "Single CTA",
+            "Description": "A section focused on one primary Call-to-Action button to drive user engagement.",
+            "Variants": "Centered, Left-Aligned, Full-Width"
+        },
+        {
+            "Section Name": "Dual CTA",
+            "Description": "A section with two distinct Call-to-Action buttons allowing for user choice.",
+            "Variants": "Horizontal, Vertical, Stacked"
+        }
+    ],
+    "Pricing Sections": [
+        {
+            "Section Name": "Single Pricing Table",
+            "Description": "Display a single pricing plan, often used for simple subscription services.",
+            "Variants": "Monthly, Annual"
+        },
+        {
+            "Section Name": "Tiered Pricing",
+            "Description": "Multiple pricing tiers or packages presented in columns with feature comparisons.",
+            "Variants": "Basic, Standard, Premium"
+        }
+    ],
+    "Product/Service Showcase Sections": [
+        {
+            "Section Name": "Product Grid",
+            "Description": "A grid layout showcasing multiple products with images, descriptions, and prices.",
+            "Variants": "3-Column, 4-Column, Carousel"
+        },
+        {
+            "Section Name": "Product Carousel",
+            "Description": "An interactive carousel displaying products one at a time for user navigation.",
+            "Variants": "Auto-Scrolling, Manual"
+        }
+    ],
+    "Blog & Content Sections": [
+        {
+            "Section Name": "Latest Blog Posts",
+            "Description": "A grid of recent blog posts with thumbnails, titles, and summaries.",
+            "Variants": "3-Column, 4-Column, Sidebar"
+        },
+        {
+            "Section Name": "Featured Blog Post",
+            "Description": "Highlight a specific or trending blog post prominently in a section.",
+            "Variants": "Full Width, Centered"
+        }
+    ],
+    "Contact Sections": [
+        {
+            "Section Name": "Contact Form",
+            "Description": "A simple form where users can contact the company by entering their details and a message.",
+            "Variants": "Single Column, Two-Column, Embedded Map"
+        },
+        {
+            "Section Name": "FAQ Section",
+            "Description": "A section answering frequently asked questions with collapsible answers.",
+            "Variants": "List, Accordion"
+        }
+    ],
+    "Footer Sections": [
+        {
+            "Section Name": "Basic Footer",
+            "Description": "A minimalist footer with copyright, links, and social media icons.",
+            "Variants": "Centered, Left-Aligned"
+        },
+        {
+            "Section Name": "Detailed Footer",
+            "Description": "A footer with multiple sections including contact info, links, and social media.",
+            "Variants": "4-Column, Multi-Row"
+        }
+    ],
+    "Navigation/Headers": [
+        {
+            "Section Name": "Simple Navigation Bar",
+            "Description": "A basic navigation bar with links to different pages and the website logo.",
+            "Variants": "Sticky, Non-Sticky"
+        },
+        {
+            "Section Name": "Dropdown Navigation",
+            "Description": "A navigation bar that includes dropdown menus for subpages or categories.",
+            "Variants": "Multi-Level, Mega Menu"
+        }
+    ],
+    "Team/People Sections": [
+        {
+            "Section Name": "Meet the Team",
+            "Description": "Display team members' profiles with images, names, roles, and social links.",
+            "Variants": "Grid, Slideshow"
+        },
+        {
+            "Section Name": "Careers Section",
+            "Description": "Highlight available job positions and encourage users to apply.",
+            "Variants": "Job Listing, Company Culture"
+        }
+    ],
+    "Error Pages": [
+        {
+            "Section Name": "404 Page",
+            "Description": "A 'Page Not Found' error page with an optional link back to the homepage.",
+            "Variants": "Minimal, Illustrated"
+        },
+        {
+            "Section Name": "500 Page",
+            "Description": "A 'Server Error' page with a message to contact support.",
+            "Variants": "Text-Based, Graphical"
+        }
+    ]
+}

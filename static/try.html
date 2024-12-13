@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Lightning Particle System</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #001020;
+
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const maxParticles = 150;
+        const lightningChance = 0.002;
+        const branchChance = 0.3;
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x || Math.random() * canvas.width;
+                this.y = y || Math.random() * canvas.height;
+                this.radius = Math.random() * 2 + 1;
+                this.speed = Math.random() * 0.5 + 0.1;
+                this.directionX = Math.random() * 2 - 1;
+                this.directionY = Math.random() * 2 - 1;
+                this.charge = 0;
+                this.lifespan = Math.random() * 300 + 200;
+                this.color = `hsl(${Math.random() * 60 + 180}, 100%, 50%)`;
+            }
+
+            update() {
+                this.x += this.directionX * this.speed;
+                this.y += this.directionY * this.speed;
+
+                if (this.x < 0 || this.x > canvas.width) this.directionX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.directionY *= -1;
+
+                if (this.charge > 0) this.charge--;
+                this.lifespan--;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.charge > 0 ? 'rgba(255, 255, 100, 0.8)' : this.color;
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < maxParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(0, 16, 32, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach((particle, index) => {
+                particle.update();
+                particle.draw();
+
+                if (particle.lifespan <= 0) {
+                    particles.splice(index, 1);
+                    particles.push(new Particle());
+                }
+            });
+
+            createLightning();
+            requestAnimationFrame(animate);
+        }
+
+        function createLightning() {
+            if (Math.random() < lightningChance) {
+                const start = particles[Math.floor(Math.random() * particles.length)];
+                const end = particles[Math.floor(Math.random() * particles.length)];
+                if (start !== end) {
+                    start.charge = 10;
+                    end.charge = 10;
+                    drawLightningBranch(start, end, 4);
+                }
+            }
+        }
+
+        function drawLightningBranch(start, end, depth) {
+            if (depth <= 0) return;
+
+            const midX = (start.x + end.x) / 2;
+            const midY = (start.y + end.y) / 2;
+            const offsetX = (Math.random() - 0.5) * 30;
+            const offsetY = (Math.random() - 0.5) * 30;
+
+            ctx.beginPath();
+            ctx.moveTo(start.x, start.y);
+            ctx.lineTo(midX + offsetX, midY + offsetY);
+            ctx.lineTo(end.x, end.y);
+            ctx.strokeStyle = `rgba(255, 255, 100, ${0.7 + (depth * 0.05)})`;
+            ctx.lineWidth = depth * 0.5;
+            ctx.stroke();
+
+            if (Math.random() < branchChance) {
+                const branchEnd = particles[Math.floor(Math.random() * particles.length)];
+                drawLightningBranch({x: midX + offsetX, y: midY + offsetY}, branchEnd, depth - 1);
+            }
+
+            if (Math.random() < branchChance) {
+                const branchEnd = particles[Math.floor(Math.random() * particles.length)];
+                drawLightningBranch({x: midX + offsetX, y: midY + offsetY}, branchEnd, depth - 1);
+            }
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles.length = 0;
+            init();
+        });
+
+        // User interactions
+        let lastInteractionTime = 0;
+        const interactionCooldown = 500; // ms
+
+        canvas.addEventListener('mousemove', (e) => {
+            const currentTime = Date.now();
+            if (currentTime - lastInteractionTime > interactionCooldown) {
+                const nearestParticle = findNearestParticle(e.clientX, e.clientY);
+                if (nearestParticle) {
+                    const newParticle = new Particle(e.clientX, e.clientY);
+                    particles.push(newParticle);
+                    drawLightningBranch(nearestParticle, newParticle, 3);
+                    lastInteractionTime = currentTime;
+                }
+            }
+        });
+
+        canvas.addEventListener('click', (e) => {
+            const clickedParticle = findNearestParticle(e.clientX, e.clientY);
+            if (clickedParticle) {
+                createExplosion(clickedParticle);
+            }
+        });
+
+        function findNearestParticle(x, y) {
+            let nearest = null;
+            let minDistance = Infinity;
+
+            for (let particle of particles) {
+                const dx = particle.x - x;
+                const dy = particle.y - y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    nearest = particle;
+                }
+            }
+
+            return nearest;
+        }
+
+        function createExplosion(center) {
+            const explosionParticles = 10;
+            for (let i = 0; i < explosionParticles; i++) {
+                const angle = (Math.PI * 2 / explosionParticles) * i;
+                const newParticle = new Particle(center.x, center.y);
+                newParticle.directionX = Math.cos(angle);
+                newParticle.directionY = Math.sin(angle);
+                newParticle.speed = Math.random() * 2 + 1;
+                newParticle.charge = 10;
+                particles.push(newParticle);
+            }
+        }
+    </script>
+</body>
+</html>

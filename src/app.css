@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 308.6 70.0% 3.9%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210.0 40.0% 45.1%;
+    --primary: 173.0 70.2% 50.0%;
+    --primary-foreground: 0.0 0.0% 100.0%;
+    --secondary: 263.6 30.4% 18.0%;
+    --secondary-foreground: 189.9 100.0% 50.0%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 218.3 35.3% 60.0%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 263.4 70% 50.4%;
+  }
+}
+
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground overflow-x-hidden;
+	}
+	html {
+		@apply bg-background text-foreground;
+	}
+}
+
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Barlow';
+	font-style: normal;
+	font-weight: 400;
+	src: url('/fonts/Barlow-Black.ttf') format('truetype');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Oswald';
+	font-style: normal;
+	font-weight: 200 700;
+	src: url('/fonts/Oswald-VariableFont_wght.ttf') format('truetype');
+}
